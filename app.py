@@ -85,12 +85,34 @@ elif optiune == "Simulare orbită":
         st.pyplot(fig)
 elif optiune == "Calculuri suplimentare":
     st.header("⚡ Calculuri suplimentare")
-    
+
+    st.subheader("1️⃣ Viteza orbitală")
     G = 6.674e-11
-    M = st.number_input("Masa corpului central (kg)", value=1.989e30)
-    r = st.number_input("Raza orbitei (m)", value=1.496e11)
-    
+    M = st.number_input("Masa corpului central (kg)", min_value=0.0, value=1.989e30)
+    r = st.number_input("Raza orbitei (m)", min_value=0.0, value=1.496e11)
+
     if st.button("Calculează viteza orbitală"):
-        v = (G*M/r)**0.5
+        v = (G * M / r) ** 0.5
         st.success(f"Viteza orbitală: {v:.2f} m/s")
+
+    st.subheader("2️⃣ Timp pentru unghi parcurs")
+    T = st.number_input("Perioada orbitală (s)", min_value=0.0, value=3.154e7)
+    theta = st.number_input("Unghi parcurs (grade)", min_value=0.0, max_value=360.0, value=90.0)
+
+    if st.button("Calculează timp parțial"):
+        t_parțial = theta / 360 * T
+        st.success(f"Timpul pentru {theta}°: {t_parțial:.2f} s")
+
+    st.subheader("3️⃣ Forță gravitațională între mai multe corpuri")
+    st.markdown("Introduceți două mase și distanța dintre ele:")
+
+    m1 = st.number_input("Masa 1 (kg)", min_value=0.0, value=5.972e24)
+    m2 = st.number_input("Masa 2 (kg)", min_value=0.0, value=7.348e22)
+    r_force = st.number_input("Distanța (m)", min_value=0.0, value=3.844e8)
+
+    if st.button("Calculează forța"):
+        F = G * m1 * m2 / r_force**2
+        st.success(f"Forța gravitațională: {F:.3e} N")
+
+
 
