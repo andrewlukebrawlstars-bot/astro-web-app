@@ -14,8 +14,8 @@ optiune = st.sidebar.selectbox(
         "Distanță unghiulară",
         "Legea a III-a a lui Kepler",
         "Forță gravitațională",
-        "Simulare orbită"
-        "Calcule suplimentare"
+        "Simulare orbită",
+        "Calculuri suplimentare"
     )
 )
 
@@ -28,7 +28,7 @@ if optiune == "Distanță unghiulară":
     ra2 = st.number_input("RA2 (grade)")
     dec2 = st.number_input("DEC2 (grade)")
 
-    if st.button("Calculează"):
+    if st.button("Calculează distanța"):
         ra1, dec1, ra2, dec2 = map(math.radians, [ra1, dec1, ra2, dec2])
         cos_d = (math.sin(dec1)*math.sin(dec2) +
                  math.cos(dec1)*math.cos(dec2)*math.cos(ra1 - ra2))
@@ -84,6 +84,8 @@ elif optiune == "Simulare orbită":
         ax.set_title("Orbită planetară")
 
         st.pyplot(fig)
+
+# ------------------------------
 elif optiune == "Calculuri suplimentare":
     st.header("⚡ Calculuri suplimentare")
 
@@ -104,7 +106,7 @@ elif optiune == "Calculuri suplimentare":
         t_parțial = theta / 360 * T
         st.success(f"Timpul pentru {theta}°: {t_parțial:.2f} s")
 
-    st.subheader("3️⃣ Forță gravitațională între mai multe corpuri")
+    st.subheader("3️⃣ Forță gravitațională între două corpuri")
     st.markdown("Introduceți două mase și distanța dintre ele:")
 
     m1 = st.number_input("Masa 1 (kg)", min_value=0.0, value=5.972e24)
@@ -114,6 +116,8 @@ elif optiune == "Calculuri suplimentare":
     if st.button("Calculează forța"):
         F = G * m1 * m2 / r_force**2
         st.success(f"Forța gravitațională: {F:.3e} N")
+
+
 
 
 
