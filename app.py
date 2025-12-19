@@ -83,3 +83,14 @@ elif optiune == "Simulare orbită":
         ax.set_title("Orbită planetară")
 
         st.pyplot(fig)
+elif optiune == "Calculuri suplimentare":
+    st.header("⚡ Calculuri suplimentare")
+    
+    G = 6.674e-11
+    M = st.number_input("Masa corpului central (kg)", value=1.989e30)
+    r = st.number_input("Raza orbitei (m)", value=1.496e11)
+    
+    if st.button("Calculează viteza orbitală"):
+        v = (G*M/r)**0.5
+        st.success(f"Viteza orbitală: {v:.2f} m/s")
+
