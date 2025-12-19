@@ -15,6 +15,7 @@ optiune = st.sidebar.selectbox(
         "Legea a III-a a lui Kepler",
         "Forță gravitațională",
         "Simulare orbită"
+        "Calcule suplimentare"
     )
 )
 
@@ -113,6 +114,7 @@ elif optiune == "Calculuri suplimentare":
     if st.button("Calculează forța"):
         F = G * m1 * m2 / r_force**2
         st.success(f"Forța gravitațională: {F:.3e} N")
+
 
 
 
